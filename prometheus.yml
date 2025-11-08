@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'sensor-simulator'
+    static_configs:
+      - targets: ['sensor-simulator:8000']
+

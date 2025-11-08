@@ -1,0 +1,144 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Healthcare IoT Vitals Monitoring",
+    "uid": "health-iot-vitals",
+    "timezone": "browser",
+    "schemaVersion": 38,
+    "version": 1,
+    "refresh": "5s",
+    "panels": [
+      {
+        "type": "timeseries",
+        "title": "Patient Temperature (\u00b0C)",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "targets": [
+          {
+            "expr": "patient_temperature_celsius",
+            "legendFormat": "Temperature"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "celsius",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 37.5
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list"
+          }
+        }
+      },
+      {
+        "type": "timeseries",
+        "title": "Heart Rate (BPM)",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "targets": [
+          {
+            "expr": "patient_heart_rate_bpm",
+            "legendFormat": "Heart Rate"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bpm",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 50
+                },
+                {
+                  "color": "green",
+                  "value": 60
+                },
+                {
+                  "color": "red",
+                  "value": 110
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list"
+          }
+        }
+      },
+      {
+        "type": "timeseries",
+        "title": "Oxygen Saturation (SpO\u2082 %)",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "targets": [
+          {
+            "expr": "patient_spo2_percent",
+            "legendFormat": "SpO\u2082"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "red",
+                  "value": 92
+                },
+                {
+                  "color": "green",
+                  "value": 95
+                }
+              ]
+            }
+          }
+        },
+        "options": {
+          "legend": {
+            "displayMode": "list"
+          }
+        }
+      }
+    ],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-5m",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m"
+      ]
+    }
+  },
+  "overwrite": true
+}
